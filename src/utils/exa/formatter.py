@@ -1,21 +1,11 @@
 #!/usr/bin/env python3
+#pyright: basic
 """
 Formatting utilities for Exa search results.
 """
 from typing import Optional
 from ..common import FormatType, format_as_json, BaseFormatter
 from .types import ExaResult
-
-def truncate_text(text: str, max_length: int = 200, suffix: str = "...") -> str:
-    """Truncate text to max_length, ensuring we don't cut words in half."""
-    if len(text) <= max_length:
-        return text
-    
-    truncated = text[:max_length]
-    last_space = truncated.rfind(" ")
-    if last_space > 0:
-        truncated = truncated[:last_space]
-    return truncated + suffix
 
 def format_single_result(results: ExaResult, output_format: FormatType) -> str:
     """Format a single search result in the specified format."""
@@ -37,12 +27,12 @@ def format_single_result(results: ExaResult, output_format: FormatType) -> str:
         
     for i, result in enumerate(search_results, 1):
         title = result.get('title', 'No title').strip()
+        author = result.get('author', 'No author').strip()
         url = result.get('url', 'No URL').strip()
-        snippet = result.get('snippet', 'No snippet').strip()
         
         formatted_text += f"{i}. {title}\n"
         formatted_text += f"   URL: {url}\n"
-        formatted_text += f"   Snippet: {truncate_text(snippet)}\n\n"
+        formatted_text += f"   Snippet: {author}\n\n"
     
     return formatted_text
 

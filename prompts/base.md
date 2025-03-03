@@ -15,7 +15,7 @@ This document contains essential context for AI agents about the VSCode Agent To
 - **Research**: Use tools to gather information, then synthesize it
 - **Content Creation**: Generate structured content based on gathered information
 - **Tool Execution**: Suggest commands for the user to run when needed. You can run these (and other) commands right from the terminal.
-- **Memory Maintenance**: Keep an up-to-date "minutes" of your current user interactions in the chat in timestamped and intuitiviely named fils in the `memory/` folder, for using your vector search capabilities to recall past interactions.
+- **Memory Maintenance**: Keep an up-to-date "minutes" of your current user interactions in the chat in intuitiviely named files in the `memory/` folder, for using your vector search capabilities to recall past interactions.
 
 **Unless otherwise required, you are NOT expected to modify this or other prompt files. Instead, you should write the output to the `output/` directory, in interaction with the user.**
 

@@ -5,23 +5,17 @@ Formatting utilities for Soup text extraction results.
 from ..common import FormatType, format_as_json, BaseFormatter
 from .types import SoupResult
 
-def format_content_preview(content: str, max_length: int = 500, context_lines: int = 3) -> str:
-    """Format content preview with smart truncation."""
-    if len(content) <= max_length:
-        return content
-        
-    lines = content.split('\n')
-    if len(lines) <= context_lines * 2:
-        return content[:max_length] + "..."
-        
-    start_lines = lines[:context_lines]
-    end_lines = lines[-context_lines:]
+def format_content_preview(content: str, offset = 0, chunk_size = 5000) -> str:
+    """Format a preview of the extracted content."""
+
+    truncated_content = content[offset:offset + chunk_size]
+
+    if len(content) > offset + chunk_size:
+        note = f'\n\n[Truncated content from {offset} to {offset + chunk_size} characters\nTo read further, run the tool in the format of `tools/soup.py --url(s) "<url> from {offset + chunk_size}"]'
+    else:
+        note = ""
     
-    preview = "\n".join(start_lines)
-    preview += "\n...\n[Content truncated]\n...\n"
-    preview += "\n".join(end_lines)
-    
-    return preview
+    return truncated_content + "..." + note
 
 def format_single_output(data: SoupResult, output_format: FormatType) -> str:
     """Format a single extraction result in the specified format."""

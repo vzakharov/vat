@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#pyright: basic
 """
 Exa Search Tool
 A command-line utility that searches the web using the Exa API.
@@ -51,7 +52,7 @@ def search_exa(query: str, limit: int = DEFAULT_SEARCH_LIMIT) -> ExaResult:
     payload = {
         "query": query,
         "numResults": limit,
-        "useAutoprompt": True
+        "useAutoprompt": True,
     }
     
     try:
@@ -67,8 +68,8 @@ def search_exa(query: str, limit: int = DEFAULT_SEARCH_LIMIT) -> ExaResult:
             results=[
                 ExaSearchResult(
                     title=item.get('title', 'No title'),
+                    author=item.get('author', 'No author'),
                     url=item.get('url', 'No URL'),
-                    snippet=item.get('text', 'No snippet')
                 ) 
                 for item in result.get('results', [])
             ]

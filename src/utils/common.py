@@ -17,7 +17,8 @@ class ErrorResult(BaseResult):
     error: str
 
 # Format types
-FormatType = Literal["text", "json"]
+# FormatType = Literal["text", "json"]
+FormatType = str
 
 # Generic type for results
 T = TypeVar('T', bound=Union[BaseResult, ErrorResult])
