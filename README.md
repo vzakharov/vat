@@ -1,10 +1,10 @@
 # VAT (VSCode Agent Toolbox)
 
-A meta-framework that extends VSCode AI agents' capabilities through command-line tools.
+A meta-framework that extends VSCode AI agents’ capabilities through specialized command-line tools and prompt files.
 
 ## Background & Overview
 
-VAT was inspired by the transformative potential of VSCode AI agents. These agents can interact with command-line tools, essentially allowing them to do anything a human can do in a terminal — with user confirmation for safety. By providing specialized tools, you're extending your AI assistant's capabilities far beyond code assistance.
+VAT was inspired by the transformative potential of VSCode AI agents. These agents can interact with command-line tools, essentially allowing them to do anything a human can do in a terminal — with user confirmation for safety. By providing specialized tools, you’re extending your AI assistant’s capabilities far beyond code assistance.
 
 For example, take web search and content extraction. OpenAI has recently created their Deep Research feature, which is mindblowing on its own — but with the VAT approach, you can replicate it by just combining a few command-line tools and a well-crafted prompt. The AI agent then handles all the complexity: searching, extracting content, evaluating the results, searching again with refined queries, until it has gathered enough meaningful information to synthesize a comprehensive response.
 
@@ -13,7 +13,7 @@ This pattern can expand to virtually any command-line capability — data proces
 ## How It Works
 
 1. Open `base.md` in your VSCode AI agent workspace and lock it in the working set (click the lock icon)
-2. Open a specific prompt like `deep_researcher.md` — it's automatically added to your working set
+2. Open a specific prompt like `deep_researcher.md` — it’s automatically added to your working set
 3. Ask a question or give a command related to that capability
 
 The magic happens when these two prompts combine — the agent understands both what tools are available and how to use them effectively for your specific task.
@@ -31,7 +31,7 @@ For example, with `deep_researcher.md` loaded, you might ask "quantum computing 
 - **Web Search**: Command-line interface to Exa API
 - **Content Extraction**: Extract meaningful text from web pages
 
-But that's just the start — the framework is designed to work with any command-line tool you can create.
+But that’s just the start — the framework is designed to work with any command-line tool you can create.
 
 ---
 
@@ -95,16 +95,18 @@ pip install -e .
 
 ## Extending VAT
 
-The true potential of VAT comes from creating new tools and prompts. Any command-line program can become an extension of your AI agent's capabilities. Some ideas:
+The true potential of VAT comes from creating new tools and prompts. Any command-line program can become an extension of your AI agent’s capabilities. Some ideas:
 - Data analysis tools
 - Image processing utilities
 - API wrappers for various services
 - Local database interactions
 
-Simply create a new tool in the `tools/` directory and document its usage in your prompt files.
+Feel free to fork the repository and submit pull requests with your own prompts and tools — let’s expand the possibilities together!
 
-Feel free to fork the repository and submit pull requests with your own prompts and tools — let's expand the possibilities together!
+Simply create a new tool in the `tools/` directory and document its usage in your prompt files (As a rule of thumb, try abstracting anything not directly related to the tool’s logic into `src/` for better maintainability and reusability.)
 
 ## Security Note
 
-Tools run with the same permissions as your VSCode instance. The agent will ask for confirmation before running commands.
+Tools run with the same permissions as your VSCode instance. The agent will ask for confirmation before running commands. Still, be cautious with any sensitive data or operations. AI agents are only as safe and secure as the environment they run in — well, and the humans that interact with them.
+
+P.S. Fun fact: 99% of this repository was written by a VSCode AI agent.
