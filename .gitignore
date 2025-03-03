@@ -1,0 +1,7 @@
+.DS_Store
+.env
+/output/*
+/memory/*
+/venv/*
+/vat.egg-info/*
+__pycache__/
